@@ -1,1 +1,1 @@
-export const DEFAULT_STRING = 'happy christmas'
+export const DEFAULT_STRING = 'abcdefghijklmnopqrstuvwxyz'
