@@ -10,6 +10,7 @@ export default {
      * @param {WebpackConfigHelpers} helpers - object with useful helpers for working with the webpack config.
      * @param {object} options - this is mainly relevant for plugins (will always be empty in the config), default to an empty object
      **/
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     webpack(config, env, helpers, options) {
         config.module.rules[4].use.splice(1, 0, {
             loader: "@teamsupercell/typings-for-css-modules-loader",
@@ -20,8 +21,12 @@ export default {
             }
         });
 
+        //relative path
+        config.output.publicPath = "/random-walker/";
+
         // Use any `index` file, not just index.js
         config.resolve.alias["preact-cli-entrypoint"] = resolve(
+            // eslint-disable-next-line no-undef
             process.cwd(),
             "src",
             "index"
