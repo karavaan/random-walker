@@ -30,6 +30,5 @@ const getPivotOptions = (meta: WalkerMeta): any[] => {
     !right && currentTile.pos + 1,
     !bottom && currentTile.pos + size,
     !top && currentTile.pos - size,
-    //@ts-ignore
-  ].filter(x => typeof x === 'number').filter(x => tiles[x].value === "");
+  ].filter(x => typeof x === 'number').filter(x => tiles[x as number].value === "");
 }

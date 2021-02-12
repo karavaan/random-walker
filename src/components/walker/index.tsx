@@ -44,7 +44,7 @@ const Walker: FunctionalComponent<Size> = ({ size = 10 }) => {
                     position={tile.pos}
                     key={tile.pos}
                     color = {tile.color}
-                    clickedOn={!startTile && setStartTile}
+                    clickedOn={typeof startTile === "undefined" ? setStartTile : undefined}
                   />
               ))}
           </Grid>
