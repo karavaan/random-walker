@@ -20,11 +20,12 @@ const getInitialTilesMeta = (size: number): TilesMeta[] => {
     })
 }
 
-export const getInitialWalkerMeta = (size: number): WalkerMeta  => {
+export const getInitialWalkerMeta = (size: number, message: string): WalkerMeta  => {
     return {
         tiles: getInitialTilesMeta(size),
         stringIndex: 0,
-        size
+        size,
+        message
     }
 }
 

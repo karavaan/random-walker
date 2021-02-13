@@ -5,10 +5,15 @@ import Tile from "./elements/tile";
 import { getInitialWalkerMeta, TilesMeta } from "./helpers/empty-tiles";
 import { getNextStep } from "./helpers/next-step";
 import { getFirstStep } from "./helpers/first-step";
-type Size = { size?: number };
+
+interface Props {
+    size: number;
+    message: string;
+}
 
 export interface WalkerMeta {
     tiles: TilesMeta[];
+    message: string;
     stringIndex: number;
     lastVisit?: number;
     size: number;
@@ -17,15 +22,18 @@ export interface WalkerMeta {
 const Grid = styled.div`
     display: grid;
     grid-template-columns: repeat(
-        ${(props: Size): number => props.size || 10},
+        ${(props: {size: number}): number => props.size},
         60px
     );
     gap: 5px 5px;
 `;
 
-const Walker: FunctionalComponent<Size> = ({ size = 10 }) => {
+const Walker: FunctionalComponent<Props> = ({
+    size ,
+    message
+}) => {
     const [startTile, setStartTile] = useState(undefined);
-    const [meta, setMeta] = useState<WalkerMeta>(getInitialWalkerMeta(size));
+    const [meta, setMeta] = useState<WalkerMeta>(getInitialWalkerMeta(size, message));
 
     useEffect(() => {
         setMeta(prev => getFirstStep(prev, startTile));

@@ -2,18 +2,17 @@ import { WalkerMeta } from "../index";
 import {getRandomElement} from "./random";
 import {getLetter} from "./alphabet";
 import { getColor } from "./color";
-import { DEFAULT_STRING } from "../constants/string";
 
 export const getNextStep = (meta: WalkerMeta): WalkerMeta => {
-  if (meta.stringIndex >= DEFAULT_STRING.length - 1 || typeof meta.lastVisit === 'undefined') {
+  if (meta.stringIndex >= meta.message.length - 1 || typeof meta.lastVisit === 'undefined') {
     return meta;
   }
   const nextPosition = getRandomElement(getPivotOptions(meta));
   if (typeof nextPosition === 'undefined') {
     return meta;
   }
-  meta.tiles[nextPosition].value = getLetter(meta.stringIndex + 1)
-  meta.tiles[nextPosition].color = getColor(meta.stringIndex + 1)
+  meta.tiles[nextPosition].value = getLetter(meta.message,meta.stringIndex + 1)
+  meta.tiles[nextPosition].color = getColor(meta.message,meta.stringIndex + 1)
   return {
     ...meta,
     stringIndex: meta.stringIndex + 1,

@@ -9,8 +9,8 @@ export const getFirstStep = (meta: WalkerMeta, startTile?: number): WalkerMeta =
     }
     return {
       ...tMeta,
-      value: getLetter(meta.stringIndex),
-      color: getColor(0)
+      value: getLetter(meta.message, meta.stringIndex),
+      color: getColor(meta.message, 0)
     };
   })
   return {
