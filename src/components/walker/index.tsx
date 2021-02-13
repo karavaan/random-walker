@@ -46,14 +46,17 @@ const Walker: FunctionalComponent<Props> = ({
     return (
       <div>
           <Grid size={size}>
-              {meta.tiles.map((tile =>
-                  <Tile
-                    value={tile.value}
-                    position={tile.pos}
-                    key={tile.pos}
-                    color = {tile.color}
-                    clickedOn={typeof startTile === "undefined" ? setStartTile : undefined}
-                  />
+              {meta.tiles.map((tile => {
+                  const {value, pos, color} = tile;
+                  return (
+                      <Tile
+                          value={value}
+                          position={pos}
+                          key={pos}
+                          color={color}
+                          clickedOn={typeof startTile === "undefined" ? setStartTile : undefined}
+                      />
+                  )}
               ))}
           </Grid>
       </div>

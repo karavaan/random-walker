@@ -1,6 +1,6 @@
 import { FunctionalComponent, h } from "preact";
 import Walker from "./walker";
-import { SIZE } from "./walker/constants/size";
+import { MAX_SIZE, SIZE } from "./walker/constants/size";
 import { GithubIcon } from "./github-icon/github-icon";
 import styled from "styled-components";
 import { getQueryParam } from "./walker/helpers/query-params";
@@ -25,7 +25,7 @@ const App: FunctionalComponent = () => {
                 </Link>
             </Content>
         <Walker
-            size={Number(getQueryParam('size') || SIZE)}
+            size={Math.min(Number(getQueryParam('size') || SIZE), MAX_SIZE)}
             message={getQueryParam('message') || DEFAULT_STRING}
         />
         </div>

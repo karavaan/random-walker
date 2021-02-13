@@ -4,18 +4,19 @@ import {getLetter} from "./alphabet";
 import { getColor } from "./color";
 
 export const getNextStep = (meta: WalkerMeta): WalkerMeta => {
-  if (meta.stringIndex >= meta.message.length - 1 || typeof meta.lastVisit === 'undefined') {
+  const { message, lastVisit, tiles, stringIndex } = meta;
+  if (stringIndex >= message.length - 1 || typeof lastVisit === 'undefined') {
     return meta;
   }
   const nextPosition = getRandomElement(getPivotOptions(meta));
   if (typeof nextPosition === 'undefined') {
     return meta;
   }
-  meta.tiles[nextPosition].value = getLetter(meta.message,meta.stringIndex + 1)
-  meta.tiles[nextPosition].color = getColor(meta.message,meta.stringIndex + 1)
+  tiles[nextPosition].value = getLetter(message,stringIndex + 1)
+  tiles[nextPosition].color = getColor(message,stringIndex + 1)
   return {
     ...meta,
-    stringIndex: meta.stringIndex + 1,
+    stringIndex: stringIndex + 1,
     lastVisit: nextPosition
   }
 }

@@ -2,7 +2,7 @@
   "private": true,
   "name": "random-walker",
   "homepage": "https://karavaan.github.io/random-walker/",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "license": "MIT",
   "scripts": {
     "build": "preact build",
